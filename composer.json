@@ -1,0 +1,40 @@
+{
+  "name": "professionalweb/integration-hub-send-data",
+  "description": "Module for integration hub to send data to url",
+  "keywords": [
+    "laravel",
+    "proxy",
+    "integration",
+    "hub",
+    "send data"
+  ],
+  "license": "MIT",
+  "type": "library",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": ">=7.1.3",
+    "professionalweb/integration-hub-common": "dev-develop"
+  },
+  "require-dev": {
+  },
+  "autoload": {
+    "classmap": [
+    ],
+    "psr-4": {
+      "professionalweb\\IntegrationHub\\SendData\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "classmap": [
+      "tests/"
+    ]
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "professionalweb\\IntegrationHub\\SendData\\Providers\\SendDataProvider"
+      ]
+    }
+  }
+}
