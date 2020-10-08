@@ -37,7 +37,8 @@ class SendData implements SendDataService
      */
     protected function sendRequest(string $url, string $method = 'GET', array $params = [], array $headers = []): string
     {
-        if ($method === 'GET') {
+        $method = mb_strtolower($method);
+        if ($method === 'get') {
             $url .= strpos($url, '?') ? '&' : '?';
             $url .= http_build_query($params);
         }
@@ -46,7 +47,7 @@ class SendData implements SendDataService
         curl_setopt($curl, CURLOPT_USERAGENT, 'ProfessionalWeb.IntegratioHub/PHP');
         if ($method === 'post') {
             curl_setopt($curl, CURLOPT_POST, 1);
-            curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
+            curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($params));
         } elseif ($method !== 'get') {
             curl_setopt($curl, CURLOPT_CUSTOMREQUEST, strtoupper($method));
             curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($params));

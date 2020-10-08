@@ -1,8 +1,8 @@
 <?php namespace professionalweb\IntegrationHub\SendData\Providers;
 
-use professionalweb\IntegrationHub\Supervisor\Listeners\NewRequestListener;
+use professionalweb\IntegrationHub\SendData\Listeners\NewEventListener;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use professionalweb\IntegrationHub\IntegrationHubCommon\Interfaces\Events\NewRequest;
+use professionalweb\IntegrationHub\IntegrationHubCommon\Interfaces\Events\EventToProcess;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -12,8 +12,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        NewRequest::class        => [
-            NewRequestListener::class,
+        EventToProcess::class => [
+            NewEventListener::class,
         ],
     ];
 }
