@@ -35,7 +35,7 @@ class SendData implements SendDataService
      * @return string|array
      * @throws \Exception
      */
-    protected function sendRequest(string $url, string $method = 'GET', array $params = [], array $headers = []): string
+    protected function sendRequest(string $url, string $method = 'GET', array $params = [], array $headers = [])
     {
         $method = mb_strtolower($method);
         if ($method === 'get') {
