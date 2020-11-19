@@ -15,13 +15,14 @@ class SendData implements SendDataService
      * @param string $method
      * @param string $url
      * @param array  $data
+     * @param array  $headers
      *
      * @return mixed
      * @throws \Exception
      */
-    public function sendData(string $method, string $url, array $data = [])
+    public function sendData(string $method, string $url, array $data = [], array $headers = [])
     {
-        return $this->sendRequest($url, $method, $data);
+        return $this->sendRequest($url, $method, $data, $headers);
     }
 
     /**

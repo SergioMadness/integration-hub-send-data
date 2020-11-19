@@ -12,8 +12,9 @@ interface SendDataService
      * @param string $method
      * @param string $url
      * @param array  $data
+     * @param array  $headers
      *
      * @return mixed
      */
-    public function sendData(string $method, string $url, array $data = []);
+    public function sendData(string $method, string $url, array $data = [], array $headers = []);
 }
