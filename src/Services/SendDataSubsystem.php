@@ -45,9 +45,14 @@ class SendDataSubsystem implements ISendDataSubsystem
         if (!isset($options['url'], $options['method'])) {
             throw new \Exception('URL and method required');
         }
-        $data = [
-            'response' => $this->getSendDataService()->sendData($options['method'], $options['url'], $eventData->getData(), $options['headers'] ?? []),
-        ];
+        try {
+            $data = [
+                'response' => $this->getSendDataService()->sendData($options['method'], $options['url'], $eventData->getData(), $options['json'] ?? false, $options['headers'] ?? []),
+            ];
+        } catch (\Throwable $ex) {
+            \Log::error($ex);
+            $data = [];
+        }
 
         return $eventData->setData($data);
     }

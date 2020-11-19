@@ -15,14 +15,15 @@ class SendData implements SendDataService
      * @param string $method
      * @param string $url
      * @param array  $data
+     * @param bool   $isJson
      * @param array  $headers
      *
      * @return mixed
      * @throws \Exception
      */
-    public function sendData(string $method, string $url, array $data = [], array $headers = [])
+    public function sendData(string $method, string $url, array $data = [], bool $isJson = false, array $headers = [])
     {
-        return $this->sendRequest($url, $method, $data, $headers);
+        return $this->sendRequest($url, $method, $data, $isJson, $headers);
     }
 
     /**
@@ -31,12 +32,13 @@ class SendData implements SendDataService
      * @param string $url
      * @param string $method
      * @param array  $params
+     * @param bool   $isJson
      * @param array  $headers
      *
      * @return string|array
      * @throws \Exception
      */
-    protected function sendRequest(string $url, string $method = 'GET', array $params = [], array $headers = [])
+    protected function sendRequest(string $url, string $method = 'GET', array $params = [], bool $isJson = false, array $headers = [])
     {
         $method = mb_strtolower($method);
         if ($method === 'get') {
@@ -48,12 +50,14 @@ class SendData implements SendDataService
         curl_setopt($curl, CURLOPT_USERAGENT, 'ProfessionalWeb.IntegratioHub/PHP');
         if ($method === 'post') {
             curl_setopt($curl, CURLOPT_POST, 1);
-            curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($params));
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $isJson ? json_encode($params) : http_build_query($params));
         } elseif ($method !== 'get') {
             curl_setopt($curl, CURLOPT_CUSTOMREQUEST, strtoupper($method));
             curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($params));
         }
-        $headersToSend = ['Content-Type:application/json'];
+        if ($isJson) {
+            $headersToSend = ['Content-Type:application/json'];
+        }
         foreach ($headers as $key => $val) {
             $headersToSend[] = $key . ':' . (\is_array($val) ? reset($val) : $val);
         }
