@@ -8,13 +8,15 @@ use professionalweb\IntegrationHub\SendData\Interfaces\SendDataSubsystem as ISen
 
 class SendDataProvider extends ServiceProvider
 {
+    public function boot(): void
+    {
+
+    }
+
     public function register(): void
     {
         $this->app->register(EventServiceProvider::class);
-    }
 
-    public function boot(): void
-    {
         $this->app->singleton(SendDataService::class, SendData::class);
         $this->app->bind(ISendDataSubsystem::class, SendDataSubsystem::class);
     }
