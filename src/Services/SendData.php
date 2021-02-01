@@ -55,6 +55,7 @@ class SendData implements SendDataService
             curl_setopt($curl, CURLOPT_CUSTOMREQUEST, strtoupper($method));
             curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($params));
         }
+        $headersToSend = [];
         if ($isJson) {
             $headersToSend = ['Content-Type:application/json'];
         }
