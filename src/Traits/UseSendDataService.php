@@ -9,7 +9,7 @@ use professionalweb\IntegrationHub\SendData\Interfaces\SendDataService;
 trait UseSendDataService
 {
     /** @var SendDataService */
-    private $sendDataService;
+    private SendDataService $sendDataService;
 
     /**
      * @return SendDataService
