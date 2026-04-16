@@ -1,6 +1,12 @@
-<?php namespace professionalweb\IntegrationHub\SendData\Services;
+<?php
 
+declare(strict_types=1);
+
+namespace professionalweb\IntegrationHub\SendData\Services;
+
+use Exception;
 use professionalweb\IntegrationHub\SendData\Interfaces\SendDataService;
+use function is_array;
 
 /**
  * Service to send data to url
@@ -14,12 +20,12 @@ class SendData implements SendDataService
      *
      * @param string $method
      * @param string $url
-     * @param array  $data
-     * @param bool   $isJson
-     * @param array  $headers
+     * @param array $data
+     * @param bool $isJson
+     * @param array $headers
      *
      * @return mixed
-     * @throws \Exception
+     * @throws Exception
      */
     public function sendData(string $method, string $url, array $data = [], bool $isJson = false, array $headers = [])
     {
@@ -31,12 +37,12 @@ class SendData implements SendDataService
      *
      * @param string $url
      * @param string $method
-     * @param array  $params
-     * @param bool   $isJson
-     * @param array  $headers
+     * @param array $params
+     * @param bool $isJson
+     * @param array $headers
      *
      * @return string|array
-     * @throws \Exception
+     * @throws Exception
      */
     protected function sendRequest(string $url, string $method = 'GET', array $params = [], bool $isJson = false, array $headers = [])
     {
@@ -60,7 +66,7 @@ class SendData implements SendDataService
             $headersToSend = ['Content-Type:application/json'];
         }
         foreach ($headers as $key => $val) {
-            $headersToSend[] = $key . ':' . (\is_array($val) ? reset($val) : $val);
+            $headersToSend[] = $key . ':' . (is_array($val) ? reset($val) : $val);
         }
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headersToSend);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
@@ -68,7 +74,7 @@ class SendData implements SendDataService
         $body = (string)curl_exec($curl);
 
         if (($code = curl_getinfo($curl, CURLINFO_HTTP_CODE)) >= 400) {
-            throw new \Exception($body, $code);
+            throw new Exception($body, $code);
         }
         if (($contentType = curl_getinfo($curl, CURLINFO_CONTENT_TYPE)) !== null && strpos($contentType, 'json') !== false) {
             return json_decode($body, true);

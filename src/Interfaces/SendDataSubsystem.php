@@ -1,4 +1,8 @@
-<?php namespace professionalweb\IntegrationHub\SendData\Interfaces;
+<?php
+
+declare(strict_types=1);
+
+namespace professionalweb\IntegrationHub\SendData\Interfaces;
 
 use professionalweb\IntegrationHub\IntegrationHubCommon\Interfaces\Services\Subsystem;
 

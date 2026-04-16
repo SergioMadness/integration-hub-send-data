@@ -1,4 +1,8 @@
-<?php namespace professionalweb\IntegrationHub\SendData\Models;
+<?php
+
+declare(strict_types=1);
+
+namespace professionalweb\IntegrationHub\SendData\Models;
 
 use professionalweb\IntegrationHub\IntegrationHubCommon\Interfaces\Models\SubsystemOptions;
 
@@ -30,7 +34,7 @@ class SendDataOptions implements SubsystemOptions
     public function getOptions(): array
     {
         return [
-            'url'    => [
+            'url' => [
                 'name' => 'Url',
                 'type' => 'string',
             ],

@@ -1,4 +1,8 @@
-<?php namespace professionalweb\IntegrationHub\SendData\Listeners;
+<?php
+
+declare(strict_types=1);
+
+namespace professionalweb\IntegrationHub\SendData\Listeners;
 
 use professionalweb\IntegrationHub\SendData\Interfaces\SendDataSubsystem;
 use professionalweb\IntegrationHub\IntegrationHubCommon\Interfaces\EventData;

@@ -1,5 +1,12 @@
-<?php namespace professionalweb\IntegrationHub\SendData\Services;
+<?php
 
+declare(strict_types=1);
+
+namespace professionalweb\IntegrationHub\SendData\Services;
+
+use Log;
+use Throwable;
+use Exception;
 use professionalweb\IntegrationHub\SendData\Models\SendDataOptions;
 use professionalweb\IntegrationHub\SendData\Traits\UseSendDataService;
 use professionalweb\IntegrationHub\SendData\Interfaces\SendDataService;
@@ -37,20 +44,20 @@ class SendDataSubsystem implements ISendDataSubsystem
      * @param EventData $eventData
      *
      * @return EventData
-     * @throws \Exception
+     * @throws Exception
      */
     public function process(EventData $eventData): EventData
     {
         $options = $this->getProcessOptions()->getOptions();
         if (!isset($options['url'], $options['method'])) {
-            throw new \Exception('URL and method required');
+            throw new Exception('URL and method required');
         }
         try {
             $data = [
                 'response' => $this->getSendDataService()->sendData($options['method'], $options['url'], $eventData->getData(), $options['json'] ?? false, $options['headers'] ?? []),
             ];
-        } catch (\Throwable $ex) {
-            \Log::error($ex);
+        } catch (Throwable $ex) {
+            Log::error($ex);
             $data = [];
         }
 

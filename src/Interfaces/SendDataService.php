@@ -1,4 +1,8 @@
-<?php namespace professionalweb\IntegrationHub\SendData\Interfaces;
+<?php
+
+declare(strict_types=1);
+
+namespace professionalweb\IntegrationHub\SendData\Interfaces;
 
 /**
  * Interface for service to send data to url
@@ -11,9 +15,9 @@ interface SendDataService
      *
      * @param string $method
      * @param string $url
-     * @param array  $data
-     * @param bool   $isJson
-     * @param array  $headers
+     * @param array $data
+     * @param bool $isJson
+     * @param array $headers
      *
      * @return mixed
      */

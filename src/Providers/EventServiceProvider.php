@@ -1,4 +1,8 @@
-<?php namespace professionalweb\IntegrationHub\SendData\Providers;
+<?php
+
+declare(strict_types=1);
+
+namespace professionalweb\IntegrationHub\SendData\Providers;
 
 use professionalweb\IntegrationHub\SendData\Listeners\NewEventListener;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;

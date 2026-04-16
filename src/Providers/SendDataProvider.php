@@ -1,4 +1,8 @@
-<?php namespace professionalweb\IntegrationHub\SendData\Providers;
+<?php
+
+declare(strict_types=1);
+
+namespace professionalweb\IntegrationHub\SendData\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use professionalweb\IntegrationHub\SendData\Services\SendData;
@@ -12,7 +16,7 @@ class SendDataProvider extends ServiceProvider
 {
     public function boot(): void
     {
-        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'IntegrationHubSendData');
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'IntegrationHubSendData');
 
         $this->app->booted(static function () {
             /** @var SubsystemPool $pool */

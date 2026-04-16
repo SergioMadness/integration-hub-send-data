@@ -1,4 +1,8 @@
-<?php namespace professionalweb\IntegrationHub\SendData\Traits;
+<?php
+
+declare(strict_types=1);
+
+namespace professionalweb\IntegrationHub\SendData\Traits;
 
 use professionalweb\IntegrationHub\SendData\Interfaces\SendDataService;
 
