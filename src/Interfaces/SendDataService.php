@@ -13,12 +13,6 @@ interface SendDataService
     /**
      * Send data
      *
-     * @param string $method
-     * @param string $url
-     * @param array $data
-     * @param bool $isJson
-     * @param array $headers
-     *
      * @return mixed
      */
     public function sendData(string $method, string $url, array $data = [], bool $isJson = false, array $headers = []);

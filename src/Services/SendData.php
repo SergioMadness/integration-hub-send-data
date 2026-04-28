@@ -18,12 +18,6 @@ class SendData implements SendDataService
     /**
      * Send data
      *
-     * @param string $method
-     * @param string $url
-     * @param array $data
-     * @param bool $isJson
-     * @param array $headers
-     *
      * @return mixed
      * @throws Exception
      */
@@ -34,12 +28,6 @@ class SendData implements SendDataService
 
     /**
      * Send request
-     *
-     * @param string $url
-     * @param string $method
-     * @param array $params
-     * @param bool $isJson
-     * @param array $headers
      *
      * @return string|array
      * @throws Exception
