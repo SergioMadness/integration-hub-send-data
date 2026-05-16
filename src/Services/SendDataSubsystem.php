@@ -30,8 +30,6 @@ class SendDataSubsystem implements ISendDataSubsystem
 
     /**
      * Get available options
-     *
-     * @return SubsystemOptions
      */
     public function getAvailableOptions(): SubsystemOptions
     {
@@ -41,9 +39,6 @@ class SendDataSubsystem implements ISendDataSubsystem
     /**
      * Process event data
      *
-     * @param EventData $eventData
-     *
-     * @return EventData
      * @throws Exception
      */
     public function process(EventData $eventData): EventData

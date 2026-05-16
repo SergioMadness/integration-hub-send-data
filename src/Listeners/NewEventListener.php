@@ -10,11 +10,6 @@ use professionalweb\IntegrationHub\IntegrationHubCommon\Interfaces\Events\EventT
 
 class NewEventListener
 {
-    /**
-     * @param EventToProcess $eventToProcess
-     *
-     * @return EventData
-     */
     public function handle(EventToProcess $eventToProcess): EventData
     {
         if ($eventToProcess->getProcessOptions()->getSubsystemId() === SendDataSubsystem::SEND_DATA_SUBSYSTEM_ID) {

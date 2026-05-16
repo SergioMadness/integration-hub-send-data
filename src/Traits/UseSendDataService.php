@@ -12,20 +12,14 @@ use professionalweb\IntegrationHub\SendData\Interfaces\SendDataService;
  */
 trait UseSendDataService
 {
-    /** @var SendDataService */
     private SendDataService $sendDataService;
 
-    /**
-     * @return SendDataService
-     */
     public function getSendDataService(): SendDataService
     {
         return $this->sendDataService;
     }
 
     /**
-     * @param SendDataService $sendDataService
-     *
      * @return static
      */
     public function setSendDataService(SendDataService $sendDataService): self
